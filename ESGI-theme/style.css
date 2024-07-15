@@ -4486,14 +4486,26 @@ summary {
   --text-color: var(--black);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "muli", sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
 }
 body.dark {
   --bg-color: var(--black);
   --text-color: var(--white);
+}
+
+#content {
+  flex: 1;
 }
 
 img {
