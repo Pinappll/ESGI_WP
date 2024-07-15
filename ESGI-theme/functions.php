@@ -418,3 +418,9 @@ function esgi_modify_query_for_blog($query) {
         $query->set('posts_per_page', 6);
     }
 }
+
+add_action('after_setup_theme', 'esgi_setup');
+function esgi_setup() {
+    // Prise en charge des images mises en avant
+    add_theme_support('post-thumbnails');
+}
