@@ -2,16 +2,15 @@
 
 <main id="site-main">
     <div class="container">
-        <div class="row">
-            <div class="col-6 offset-3">
-                <h1 class="post-title"><?= the_title() ?></h1>
-                <div class="post-content">
-                    <?php the_content() ?>
-                </div>
-            </div>
+        <?php get_template_part('template-parts/home-section') ?>      
+        <?php get_template_part('template-parts/service-section') ?>
+        <div class="partners-page">
+            <section class="partners-hero">
+                <?php get_template_part('content', 'partners') ?>
+            </section>
         </div>
-    </div>
 
+    </div>
 </main>
 
 <?php get_footer() ?>
