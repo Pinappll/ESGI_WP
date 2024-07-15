@@ -1,11 +1,12 @@
 .site-footer {
     background-color: #050A3A;
     color: #fff;
-    padding: 1.25rem;
+    padding: rem(50) rem(100);
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;  // Center the footer on larger screens
     height: auto;
+    
 
     .footer-content {
         display: flex;
@@ -15,6 +16,7 @@
 
         .footer-logo img {
             max-width: 14.583rem; // 233px
+            filter: invert(1);
         }
 
         .footer-contact {
@@ -23,7 +25,7 @@
             flex-grow: 1;
             max-width: 37.5rem; // 600px
             padding: 0 1.25rem; // 20px
-
+            text-align: right;
             .contact-info {
                 flex: 1;
                 padding: 0 0.625rem; // 10px

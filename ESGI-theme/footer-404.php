@@ -2,7 +2,7 @@
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <?php the_custom_logo(); ?>
+            
         </div>
         <div class="footer-contact">
             <div class="contact-info">
