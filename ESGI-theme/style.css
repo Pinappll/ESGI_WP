@@ -23,8 +23,6 @@ Document
 /**
 Use a better box model (opinionated).
 */
-@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
 *,
 ::before,
 ::after {
@@ -4475,8 +4473,12 @@ summary {
   }
 }
 
+@font-face {
+  font-family: "muli";
+  src: local("Muli"), url("../../assets/fonts/muli/Muli.ttf");
+}
 :root {
-  --main-color: #3f51b5;
+  --main-color: #050A3A;
   --white: #fff;
   --black: #000;
   --grey: #555;
@@ -4485,7 +4487,7 @@ summary {
 }
 
 body {
-  font-family: "Source Serif 4", serif;
+  font-family: "muli", sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
@@ -4507,36 +4509,31 @@ svg:hover path {
 }
 
 #site-header {
-  font-family: "Overpass", sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+  font-family: "muli";
+  font-size: 5.25rem;
+  line-height: 6.1525rem;
+  color: var(--main-color);
+  font-weight: 600;
   list-style: none;
   margin: 0;
   padding: 0;
   margin: 3rem 0;
 }
-#site-header .main-menu ul {
+#site-header .container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2.8125rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
 }
-#site-header .main-menu ul li a {
+#site-header .container .custom-logo-link {
+  display: contents;
+}
+#site-header .container .custom-menu-link {
+  display: contents;
+}
+#site-header .unfold-menu {
+  display: none;
+}
+#site-header .unfold-menu.active {
   display: block;
-  padding: 0.5em;
-  color: inherit;
-  text-decoration: none;
-}
-#site-header .main-menu ul li:hover a, #site-header .main-menu ul li.current-menu-item a, #site-header .main-menu ul li.current_page_parent a {
-  background-color: var(--main-color);
-  color: var(--white);
 }
 
 #site-footer {
@@ -4563,17 +4560,17 @@ svg:hover path {
   object-position: center;
 }
 .identity-card h1 {
-  font-family: "Overpass", sans-serif;
-  font-size: 1.5625rem;
-  line-height: 1.2;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+  font-family: "muli";
+  font-size: 5.25rem;
+  line-height: 6.1525rem;
+  color: var(--main-color);
+  font-weight: 600;
 }
 .identity-card h2 {
-  font-family: "Source Serif 4", serif;
-  font-size: 1rem;
-  line-height: 1.6875rem;
-  letter-spacing: 0.03em;
+  font-family: "muli";
+  font-size: 2.1875rem;
+  line-height: 2.56375rem;
+  color: var(--main-color);
   font-weight: 400;
 }
 .identity-card h1,
@@ -4597,29 +4594,29 @@ svg:hover path {
 }
 
 .post-title {
-  font-family: "Overpass", sans-serif;
-  font-size: 1.5625rem;
-  line-height: 1.2;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+  font-family: "muli";
+  font-size: 5.25rem;
+  line-height: 6.1525rem;
+  color: var(--main-color);
+  font-weight: 600;
   text-align: center;
   margin: 2em 0 1em;
 }
 
 .post-content {
-  font-family: "Source Serif 4", serif;
-  font-size: 1rem;
-  line-height: 1.6875rem;
-  letter-spacing: 0.03em;
+  font-family: "muli";
+  font-size: 2.1875rem;
+  line-height: 2.56375rem;
+  color: var(--main-color);
   font-weight: 400;
 }
 
 .post-meta {
-  font-family: "Source Serif 4", serif;
-  font-size: 0.8125rem;
-  line-height: 1.3125rem;
-  letter-spacing: 0.05em;
-  font-weight: 300;
+  font-family: "muli";
+  font-size: 1.25rem;
+  line-height: 1.465rem;
+  color: var(--main-color);
+  font-weight: 400;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -4664,11 +4661,11 @@ svg:hover path {
 .posts-list li a {
   color: inherit;
   text-decoration: none;
-  font-family: "Overpass", sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+  font-family: "muli";
+  font-size: 2.9375rem;
+  line-height: 3.68625rem;
+  color: var(--main-color);
+  font-weight: 600;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -4677,11 +4674,11 @@ svg:hover path {
   gap: 1.25rem;
 }
 .posts-list li a time {
-  font-family: "Source Serif 4", serif;
-  font-size: 0.8125rem;
-  line-height: 1.3125rem;
-  letter-spacing: 0.05em;
-  font-weight: 300;
+  font-family: "muli";
+  font-size: 1.25rem;
+  line-height: 1.465rem;
+  color: var(--main-color);
+  font-weight: 400;
   color: var(--grey);
 }
 .posts-list li:hover a {
