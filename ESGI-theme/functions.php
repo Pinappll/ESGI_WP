@@ -411,3 +411,10 @@ function esgi_home_customize_register($wp_customize)
     ));
    
 }
+
+add_action('pre_get_posts', 'esgi_modify_query_for_blog');
+function esgi_modify_query_for_blog($query) {
+    if ($query->is_home() && $query->is_main_query()) {
+        $query->set('posts_per_page', 6);
+    }
+}
