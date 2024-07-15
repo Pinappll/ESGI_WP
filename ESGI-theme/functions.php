@@ -21,6 +21,15 @@ function add_title_tag(){
     add_theme_support('title-tag');
 }
 
+// Déclaration des emplacements de menu
+// primary-menu
+add_action('after_setup_theme', 'esgi_register_nav_menu', 0);
+function esgi_register_nav_menu()
+{
+    register_nav_menus(array(
+        'primary_menu' => __('Primary Menu', 'ESGI'),
+    ));
+}
 
 
 // Ajout de fichier svg dans les médias

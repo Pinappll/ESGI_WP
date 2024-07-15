@@ -12,16 +12,24 @@
     <?php wp_body_open(); ?>
     <header id="site-header">
         <div class="container">
-            <h1>TEST</h1>
-            <?php
-            // Afficher le menu primary-menu dans une balise nav.main-menu
-            if (has_nav_menu('primary_menu')) {
-                wp_nav_menu([
-                    'menu' => 'primary_menu',
+            
+                <?php the_custom_logo(); ?>
+            
+                <a href="" class="custom-menu-link"><img src="<?php echo get_template_directory_uri(); ?>/img/menu.svg" alt="Menu" id="menu"></a>
+                
+            
+        </div>
+        <div class="unfold-menu">
+            <div class="container">
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'primary_menu',
                     'container' => 'nav',
-                    'container_class' => 'main-menu'
-                ]);
-            }
-            ?>
+                    'container_class' => 'primary-menu',
+                    'menu_class' => 'menu',
+                    'menu_id' => 'primary-menu',
+                ));
+                ?>
+            </div>
         </div>
     </header>
