@@ -13,13 +13,11 @@ add_action('after_setup_theme', 'esgi_theme_setup');
 function esgi_theme_setup()
 {
     add_theme_support('custom-logo');
+    add_theme_support('title-tag');
     
 }
 
-add_action('after_setup_theme', 'add_title_tag');
-function add_title_tag(){
-    add_theme_support('title-tag');
-}
+
 
 // Déclaration des emplacements de menu
 // primary-menu

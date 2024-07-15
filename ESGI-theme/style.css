@@ -4509,31 +4509,58 @@ svg:hover path {
 }
 
 #site-header {
-  font-family: "muli";
-  font-size: 5.25rem;
-  line-height: 6.1525rem;
-  color: var(--main-color);
-  font-weight: 600;
-  list-style: none;
   margin: 0;
-  padding: 0;
-  margin: 3rem 0;
 }
-#site-header .container {
+#site-header .custom-logo-link {
+  display: contents;
+}
+#site-header .custom-menu-link {
+  display: contents;
+}
+#site-header .container-unfold {
+  display: flex;
+  justify-content: space-between;
+  padding: 3.125rem 6.25rem;
+}
+#site-header .container-unfold.hidden {
+  display: none;
+}
+#site-header .fold {
+  display: none;
+}
+#site-header .fold.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3.125rem 6.25rem;
+  background-color: var(--main-color);
+}
+#site-header .fold.active .fold-logo {
   display: flex;
   justify-content: space-between;
 }
-#site-header .container .custom-logo-link {
-  display: contents;
+#site-header .fold.active .fold-logo .custom-logo-link img {
+  filter: invert(1);
 }
-#site-header .container .custom-menu-link {
-  display: contents;
+#site-header .fold.active #site-nav {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
-#site-header .unfold-menu {
-  display: none;
+#site-header .fold.active #site-nav a {
+  text-decoration: none;
 }
-#site-header .unfold-menu.active {
-  display: block;
+#site-header .fold.active #site-nav .menu {
+  margin: 0;
+  font-size: 2.8125rem;
+  line-height: 1.5;
+}
+#site-header .fold.active #site-nav .menu li {
+  list-style: none;
+  margin-left: 1.25rem;
+}
+#site-header .fold.active #site-nav .menu li a {
+  color: var(--white);
 }
 
 #site-footer {

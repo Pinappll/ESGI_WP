@@ -11,25 +11,27 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <header id="site-header">
-        <div class="container">
-            
-                <?php the_custom_logo(); ?>
-            
-                <a href="" class="custom-menu-link"><img src="<?php echo get_template_directory_uri(); ?>/img/menu.svg" alt="Menu" id="menu"></a>
-                
-            
+        <div class="container-unfold">
+            <?php 
+            if ( function_exists( 'the_custom_logo' ) ) {
+                the_custom_logo();
+            } 
+            ?>
+            <a href="" class="custom-menu-link"><img src="<?php echo get_template_directory_uri(); ?>/img/menu.svg" alt="Menu" id="menu"></a>
         </div>
-        <div class="unfold-menu">
-            <div class="container">
+        <div class="fold">
+            <div class="fold-logo">
+                <?php the_custom_logo(); ?>
+                <a href="" class="custom-menu-link"><img src="<?php echo get_template_directory_uri(); ?>/img/close.svg" alt="Close" id="close"></a>
+            </div>
+            <nav id="site-nav">
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'primary_menu',
-                    'container' => 'nav',
-                    'container_class' => 'primary-menu',
+                    'container' => false,
                     'menu_class' => 'menu',
-                    'menu_id' => 'primary-menu',
                 ));
                 ?>
-            </div>
+            </nav>
         </div>
     </header>
