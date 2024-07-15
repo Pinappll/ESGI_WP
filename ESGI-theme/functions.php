@@ -137,6 +137,125 @@ function esgi_customize_register($wp_customize)
             'label' => __("Email du membre $i", 'ESGI'),
             'section' => 'esgi_team_section',
         ]);
+
+        // Section pour la page About Us
+    $wp_customize->add_section('esgi_about_section', [
+        'title' => __('Page About Us', 'ESGI'),
+        'priority' => 160,
+    ]);
+
+    // Titre de la section About Us
+    $wp_customize->add_setting('about_section_title', [
+        'default' => 'About Us',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('about_section_title', [
+        'type' => 'text',
+        'label' => __('Titre de la section About Us', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    // Description de la section About Us
+    $wp_customize->add_setting('about_section_description', [
+        'default' => 'Specializing in the creation of exceptional events for private and corporate clients, we design, plan and manage every project from conception to execution.',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('about_section_description', [
+        'type' => 'textarea',
+        'label' => __('Description de la section About Us', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    // Texte "Who are we?"
+    $wp_customize->add_setting('about_who_we_are_title', [
+        'default' => 'Who are we?',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('about_who_we_are_title', [
+        'type' => 'text',
+        'label' => __('Titre "Who are we?"', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    $wp_customize->add_setting('about_who_we_are_text', [
+        'default' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('about_who_we_are_text', [
+        'type' => 'textarea',
+        'label' => __('Texte "Who are we?"', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    // Texte "Our vision"
+    $wp_customize->add_setting('about_our_vision_title', [
+        'default' => 'Our vision',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('about_our_vision_title', [
+        'type' => 'text',
+        'label' => __('Titre "Our vision"', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    $wp_customize->add_setting('about_our_vision_text', [
+        'default' => 'Suspendisse commodo magna orci.',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('about_our_vision_text', [
+        'type' => 'textarea',
+        'label' => __('Texte "Our vision"', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    // Texte "Our mission"
+    $wp_customize->add_setting('about_our_mission_title', [
+        'default' => 'Our mission',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
+    $wp_customize->add_control('about_our_mission_title', [
+        'type' => 'text',
+        'label' => __('Titre "Our mission"', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    $wp_customize->add_setting('about_our_mission_text', [
+        'default' => 'Aliquam eget consequat libero.',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+
+    $wp_customize->add_control('about_our_mission_text', [
+        'type' => 'textarea',
+        'label' => __('Texte "Our mission"', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]);
+
+    // Image pour la section About Us
+    $wp_customize->add_setting('about_image', [
+        'default' => '',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'esc_url_raw',
+    ]);
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'about_image', [
+        'label' => __('Image de la section About Us', 'ESGI'),
+        'section' => 'esgi_about_section',
+    ]));
     }
 
 }

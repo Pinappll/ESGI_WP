@@ -7,34 +7,33 @@
                 <h1 class="page-title">
                     <?php printf( esc_html__( 'Search results for: %s', 'textdomain' ), '<span>' . get_search_query() . '</span>' ); ?>
                 </h1>
-            </header><!-- .page-header -->
+            </header>
 
             <?php if ( have_posts() ) : ?>
-                <div class="search-results-grid">
-                    <?php
-                    // Start the Loop.
-                    while ( have_posts() ) :
-                        the_post();
+                <div class="search-results">
+                    <?php while ( have_posts() ) : the_post(); ?>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                            <header class="entry-header">
+                                <h2 class="entry-title">
+                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                </h2>
+                                <div class="entry-meta">
+                                    <span class="posted-on"><?php the_time( get_option( 'date_format' ) ); ?></span>
+                                    <span class="category"><?php the_category( ', ' ); ?></span>
+                                </div>
+                            </header>
+                            <div class="entry-summary">
+                                <?php the_excerpt(); ?>
+                            </div>
+                        </article>
+                    <?php endwhile; ?>
+                </div>
 
-                        // Include the template for the content.
-                        get_template_part( 'template-parts/content', 'search' );
-
-                    endwhile;
-                    ?>
-                </div><!-- .search-results-grid -->
-
-                <?php
-                // Display navigation to next/previous pages when applicable.
-                the_posts_navigation();
-
-            else :
-                // If no content, include the "No posts found" template.
-                get_template_part( 'template-parts/content', 'none' );
-
-            endif;
-            ?>
-        </main><!-- .site-main -->
-    </div><!-- .content-area -->
-</div><!-- .search-results-container -->
+            <?php else : ?>
+                <p><?php esc_html_e( 'No results found.', 'textdomain' ); ?></p>
+            <?php endif; ?>
+        </main>
+    </div>
+</div>
 
 <?php get_footer(); ?>
