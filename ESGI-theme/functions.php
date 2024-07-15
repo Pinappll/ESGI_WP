@@ -50,6 +50,14 @@ function esgi_customize_register($wp_customize)
         'priority' => 160,
     ]);
 
+    $wp_customize->add_setting('partner_main_title', [
+        'type' => 'theme_mod',
+        'capability' => 'edit_theme_options',
+        'default' => '',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+
     // Ajout des paramètres et contrôles pour chaque logo de partenaire (limité à 6)
     for ($i = 1; $i <= 6; $i++) {
         $wp_customize->add_setting("partner_logo_$i", [
@@ -295,5 +303,111 @@ function esgi_get_icon($name)
     return isset($$name) ? $$name : ''; // nom de variable dynamique;
 
 }
+//Cusomizer pour les services
+add_action('customize_register', 'esgi_services_customize_register');
+function esgi_services_customize_register($wp_customize)
+{
+    // Section pour les services
+    $wp_customize->add_section('service_section', array(
+        'title' => __('Service Section', 'mytheme'),
+        'priority' => 30,
+    ));
 
+    // Images et titre pour les services
+    for ($i = 1; $i <= 4; $i++) {
+        $setting_id = "service_image_$i";
+        $wp_customize->add_setting($setting_id, array(
+            'default' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $setting_id, array(
+            'label' => __("Service Image $i", 'mytheme'),
+            'section' => 'service_section',
+            'settings' => $setting_id,
+        )));
+    }
 
+    $wp_customize->add_setting('service_main_title', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('service_main_title', array(
+        'label' => __('Service Main Title', 'mytheme'),
+        'section' => 'service_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('service_title', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('service_title', array(
+        'label' => __('Service Title', 'mytheme'),
+        'section' => 'service_section',
+        'type' => 'text',
+    ));
+
+   
+}
+
+// Customizer pour le Home
+add_action('customize_register', 'esgi_home_customize_register');
+function esgi_home_customize_register($wp_customize)
+{
+    // Section pour le Home
+    $wp_customize->add_section('home_section', array(
+        'title' => __('Home', 'mytheme'),
+        'priority' => 30,
+    ));
+
+    //Titre pour le home
+    $wp_customize->add_setting('home_main_title', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('home_main_title', array(
+        'label' => __('Home Main Title', 'mytheme'),
+        'section' => 'home_section',
+        'type' => 'text',
+    ));
+
+    // Image pour le home
+    $wp_customize->add_setting('home_hero_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'home_hero_image', array(
+        'label' => __('Home Hero Image', 'mytheme'),
+        'section' => 'home_section',
+        'settings' => 'home_hero_image',
+    )));
+
+    // titre et paragraph pour le home
+    $wp_customize->add_setting('home_hero_title', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('home_hero_title', array(
+        'label' => __('Home Hero Title', 'mytheme'),
+        'section' => 'home_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('home_hero_paragraph', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('home_hero_paragraph', array(
+        'label' => __('Home Hero Paragraph', 'mytheme'),
+        'section' => 'home_section',
+        'type' => 'text',
+    ));
+   
+}
