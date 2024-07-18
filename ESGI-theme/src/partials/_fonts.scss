@@ -1,10 +1,15 @@
 @font-face {
 	font-family: 'muli';
-	src: 
-	local('Muli'),
-	url(
-		'../../assets/fonts/muli/Muli.ttf'
-	);
+	src: url('../../assets/fonts/muli/Muli.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'muli';
+	src: url('../../assets/fonts/muli/Muli-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
 }
 
 
