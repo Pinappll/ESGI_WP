@@ -4475,7 +4475,15 @@ summary {
 
 @font-face {
   font-family: "muli";
-  src: local("Muli"), url("../../assets/fonts/muli/Muli.ttf");
+  src: url("../../assets/fonts/muli/Muli.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "muli";
+  src: url("../../assets/fonts/muli/Muli-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
 }
 :root {
   --main-color: #050A3A;
@@ -4839,11 +4847,15 @@ svg:hover path {
 }
 
 .team-section {
-  text-align: center;
   padding: 3.125rem 0;
 }
 .team-section h2 {
-  font-size: 2.5rem;
+  font-family: "muli";
+  font-size: 3.9375rem;
+  line-height: 4.94125rem;
+  color: var(--main-color);
+  font-weight: 600;
+  letter-spacing: 0.1875rem;
   margin-bottom: 1.875rem;
 }
 .team-section .team-members {
@@ -4867,6 +4879,133 @@ svg:hover path {
 .team-section .team-member p {
   margin: 0.3125rem 0;
   font-size: 1rem;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.about-section {
+  text-align: center;
+  padding: 0 0 20px;
+  width: 100%;
+}
+.about-section h2 {
+  font-family: "muli";
+  font-size: 3.9375rem;
+  line-height: 4.94125rem;
+  color: var(--main-color);
+  font-weight: 600;
+  letter-spacing: 0.1875rem;
+  margin-bottom: 20px;
+}
+.about-section p {
+  font-size: 1.2rem;
+  max-width: 35.8125rem;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.about-image {
+  flex: 0 0 auto;
+  text-align: left;
+  margin-right: 185px;
+  margin-left: -120px;
+}
+.about-image img {
+  width: 100%;
+  height: auto;
+}
+
+.about-details {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+.about-details .who-we-are,
+.about-details .our-vision,
+.about-details .our-mission {
+  margin-bottom: 20px;
+}
+.about-details .who-we-are h3,
+.about-details .our-vision h3,
+.about-details .our-mission h3 {
+  font-family: "muli";
+  font-size: 2.9375rem;
+  line-height: 3.68625rem;
+  color: var(--main-color);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.about-details .who-we-are p,
+.about-details .our-vision p,
+.about-details .our-mission p {
+  font-size: 1rem;
+}
+
+.search-results-container {
+  padding: 20px;
+}
+.search-results-container .content-area {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.search-results-container .content-area .site-main .page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.search-results-container .content-area .site-main .page-header .page-title {
+  font-size: 2rem;
+}
+.search-results-container .content-area .site-main .page-header .page-title span {
+  color: #ff4fc0; /* Exemple de couleur */
+}
+.search-results-container .content-area .site-main .search-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+.search-results-container .content-area .site-main .search-results article {
+  padding: 20px;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+}
+.search-results-container .content-area .site-main .search-results article .entry-header {
+  margin-bottom: 15px;
+}
+.search-results-container .content-area .site-main .search-results article .entry-header .entry-title {
+  font-size: 1.25rem;
+  margin: 0;
+}
+.search-results-container .content-area .site-main .search-results article .entry-header .entry-title a {
+  color: #333;
+  text-decoration: none;
+}
+.search-results-container .content-area .site-main .search-results article .entry-header .entry-title a:hover {
+  text-decoration: underline;
+}
+.search-results-container .content-area .site-main .search-results article .entry-header .entry-meta {
+  font-size: 0.875rem;
+  color: #999;
+}
+.search-results-container .content-area .site-main .search-results article .entry-header .entry-meta .posted-on,
+.search-results-container .content-area .site-main .search-results article .entry-header .entry-meta .category {
+  display: block;
+}
+.search-results-container .content-area .site-main .search-results article .entry-summary {
+  font-size: 1rem;
+  color: #666;
 }
 
 .service-section {
@@ -4894,7 +5033,8 @@ svg:hover path {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-family: "muli";
+  font-size: 5.25rem;
 }
 
 .home-section {
