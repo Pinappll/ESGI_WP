@@ -1,32 +1,33 @@
 <aside class="sidebar">
-    <?php get_search_form(); ?>
+    <div class="widget">
+        <h2 class="widget-title"><?php _e('Search'); ?></h2>
+        <?php get_search_form(); ?>
+    </div>
     
+
     <div class="widget">
         <h2 class="widget-title"><?php _e('Recent Posts'); ?></h2>
-        <?php
-        $recent_posts = wp_get_recent_posts(array('numberposts' => 5));
-        if (!empty($recent_posts)) :
-            echo '<ul>';
-            foreach ($recent_posts as $post) :
-                echo '<li><a href="' . get_permalink($post['ID']) . '">' . $post['post_title'] . '</a></li>';
-            endforeach;
-            echo '</ul>';
-        endif;
-        ?>
+        <?php echo get_recent_posts_with_images_and_dates(5); ?>
     </div>
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Archives'); ?></h2>
-        <?php wp_get_archives(array('type' => 'monthly', 'limit' => 12)); ?>
+        <ul class="list-archive">
+            <?php wp_get_archives(array('type' => 'monthly', 'limit' => 12)); ?>
+        </ul>
     </div>
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Categories'); ?></h2>
-        <?php wp_list_categories(array('title_li' => '')); ?>
+        <ul class="list-categorie">
+            <?php wp_list_categories(array('title_li' => '')); ?>
+        </ul>
     </div>
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Tags'); ?></h2>
-        <?php wp_tag_cloud(); ?>
+        <div class="tag-links">
+            <?php wp_tag_cloud(); ?>
+        </div>
     </div>
 </aside>

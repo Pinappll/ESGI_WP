@@ -2,7 +2,7 @@
 /* Template Name: Blog Page */
 get_header(); ?>
 
-<div id="primary" class="content-area">
+<div id="primary" class="content-area content-blog">
     <main id="main" class="site-main">
 
         <header class="page-header">
