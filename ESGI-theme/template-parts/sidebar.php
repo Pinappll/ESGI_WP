@@ -1,36 +1,27 @@
 <aside class="sidebar">
-    <?php get_search_form(); ?>
+    <div class="widget">
+        <h2 class="widget-title"><?php _e('Search'); ?></h2>
+        <?php get_search_form(); ?>
+    </div>
+    
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Recent Posts'); ?></h2>
-        <?php
-        // Requête personnalisée pour les articles récents
-        $recent_posts_query = new WP_Query(array(
-            'posts_per_page' => 5, // Nombre d'articles à afficher
-            'post_status'    => 'publish' // Affiche seulement les articles publiés
-        ));
-        
-        if ($recent_posts_query->have_posts()) :
-            echo '<ul>';
-            while ($recent_posts_query->have_posts()) : $recent_posts_query->the_post();
-                echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
-            endwhile;
-            echo '</ul>';
-            wp_reset_postdata(); // Réinitialise la requête principale
-        else :
-            echo '<p>' . __('No recent posts available.') . '</p>';
-        endif;
-        ?>
+        <?php echo get_recent_posts_with_images_and_dates(5); ?>
     </div>
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Archives'); ?></h2>
-        <?php wp_get_archives(array('type' => 'monthly', 'limit' => 12)); ?>
+        <ul class="list-archive">
+            <?php wp_get_archives(array('type' => 'monthly', 'limit' => 12)); ?>
+        </ul>
     </div>
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Categories'); ?></h2>
-        <?php wp_list_categories(array('title_li' => '')); ?>
+        <ul class="list-categorie">
+            <?php wp_list_categories(array('title_li' => '')); ?>
+        </ul>
     </div>
 
     <div class="widget">

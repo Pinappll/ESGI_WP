@@ -603,5 +603,35 @@ function my_custom_comment_format($comment, $args, $depth) {
     <?php
 
 }
+function get_recent_posts_with_images_and_dates($number_of_posts = 5) {
+    $recent_posts_query = new WP_Query(array(
+        'posts_per_page' => $number_of_posts,
+        'post_status'    => 'publish'
+    ));
+    
+    $output = '';
+    
+    if ($recent_posts_query->have_posts()) {
+        $output .= '<ul class="recent-posts ">';
+        while ($recent_posts_query->have_posts()) {
+            $recent_posts_query->the_post();
+            $output .= '<li>';
+            if (has_post_thumbnail()) {
+                $output .= '<a href="' . get_permalink() . '">' . get_the_post_thumbnail(get_the_ID(), 'thumbnail', array('class' => 'recent-post-image')) . '</a>';
+            }
+            $output .= '<div class="recent-post-content">';
+            $output .= '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+            $output .= '<span class="recent-post-date">' . get_the_date() . '</span>';
+            $output .= '</div>';
+            $output .= '</li>';
+        }
+        $output .= '</ul>';
+        wp_reset_postdata(); // Réinitialise la requête principale
+    } else {
+        $output .= '<p>' . __('No recent posts available.') . '</p>';
+    }
+    
+    return $output;
+}
 
 
