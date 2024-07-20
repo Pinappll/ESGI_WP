@@ -16,13 +16,18 @@ get_header(); ?>
                 <div class="single-post-content">
                     <?php if (has_post_thumbnail()) : ?>
                         <div class="post-thumbnail">
-                            <?php the_post_thumbnail('large'); ?>
+                            <?php the_post_thumbnail('large');  ?>
                         </div>
+                    <?php else : ?>
+                        <p>Aucune image à la une définie.</p>
                     <?php endif; ?>
 
                     <div class="post-meta">
-                        <span class="post-category"><?php the_category(', '); ?></span>
-                        <span class="post-date"><?php echo get_the_date(); ?></span>
+                        <div>
+                            <span class="post-category"><?php the_category(', '); ?></span>
+                            <span>-</span>
+                            <span class="post-date"><?php echo get_the_date(); ?></span>
+                        </div>
                     </div>
 
                     <div class="post-content">

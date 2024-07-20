@@ -1,16 +1,24 @@
 <aside class="sidebar">
     <?php get_search_form(); ?>
-    
+
     <div class="widget">
         <h2 class="widget-title"><?php _e('Recent Posts'); ?></h2>
         <?php
-        $recent_posts = wp_get_recent_posts(array('numberposts' => 5));
-        if (!empty($recent_posts)) :
+        // Requête personnalisée pour les articles récents
+        $recent_posts_query = new WP_Query(array(
+            'posts_per_page' => 5, // Nombre d'articles à afficher
+            'post_status'    => 'publish' // Affiche seulement les articles publiés
+        ));
+        
+        if ($recent_posts_query->have_posts()) :
             echo '<ul>';
-            foreach ($recent_posts as $post) :
-                echo '<li><a href="' . get_permalink($post['ID']) . '">' . $post['post_title'] . '</a></li>';
-            endforeach;
+            while ($recent_posts_query->have_posts()) : $recent_posts_query->the_post();
+                echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+            endwhile;
             echo '</ul>';
+            wp_reset_postdata(); // Réinitialise la requête principale
+        else :
+            echo '<p>' . __('No recent posts available.') . '</p>';
         endif;
         ?>
     </div>
@@ -27,6 +35,8 @@
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Tags'); ?></h2>
-        <?php wp_tag_cloud(); ?>
+        <div class="tag-links">
+            <?php wp_tag_cloud(); ?>
+        </div>
     </div>
 </aside>

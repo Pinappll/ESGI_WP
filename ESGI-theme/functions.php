@@ -543,3 +543,65 @@ function esgi_setup() {
     // Prise en charge des images mises en avant
     add_theme_support('post-thumbnails');
 }
+
+function handle_custom_comment_form() {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['fullname']) && !empty($_POST['comment'])) {
+        $comment_post_ID = intval($_POST['comment_post_ID']);
+        $comment_parent = intval($_POST['comment_parent']);
+        $fullname = sanitize_text_field($_POST['fullname']);
+        $comment_content = sanitize_textarea_field($_POST['comment']);
+
+        error_log("Received comment for post ID: $comment_post_ID"); // Debug message
+
+        // Enregistrer le commentaire
+        $comment_data = array(
+            'comment_post_ID' => $comment_post_ID,
+            'comment_author' => $fullname,
+            'comment_content' => $comment_content,
+            'comment_type' => '',
+            'comment_parent' => $comment_parent,
+            'user_id' => get_current_user_id(),
+            'comment_approved' => 1, // Approuver immédiatement le commentaire (pour les tests)
+        );
+
+        $comment_id = wp_insert_comment($comment_data);
+        if (is_wp_error($comment_id)) {
+            error_log("Failed to insert comment: " . $comment_id->get_error_message());
+        } else {
+            error_log("Comment successfully inserted with ID: $comment_id");
+
+            wp_redirect(get_permalink());
+            exit;
+        }
+    } else {
+        error_log("Form submission error: " . print_r($_POST, true)); // Log form data
+    }
+}
+add_action('wp', 'handle_custom_comment_form');
+
+function my_custom_comment_format($comment, $args, $depth) {
+   
+    $image_url = get_template_directory_uri() . '/img/reply.svg'; // Chemin de l'image
+    ?>
+
+    <li>
+        <div class="comment-content">
+            <div class="comment-author"><?php echo get_comment_author(); ?></div>
+            <div class="comment-text"><?php echo get_comment_text(); ?></div>
+
+            <?php if (comments_open()) : ?>
+                <div class="comment-reply">
+                    
+                        <button type="submit" class="reply-button" data-comment="<?php echo comment_ID() ?>" data-author="<?php echo get_comment_author() ?>">
+                            <img src="<?php echo $image_url; ?>" alt="Reply Image" class="reply-image">
+                            Reply
+                        </button>
+                </div>
+            <?php endif; ?>
+        </div>
+    </li>
+    <?php
+
+}
+
+

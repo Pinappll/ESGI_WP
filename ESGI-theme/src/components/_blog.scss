@@ -16,7 +16,6 @@
 .sidebar {
     width: 25%;
     padding: 20px;
-    background-color: #f8f9fa;
 }
 
 .sidebar .widget {
@@ -87,8 +86,9 @@
 }
 
 .entry-title {
-    font-size: 2.5em;
-    margin-left: 20px;
+    font-family: Muli;
+    font-size: rem(84);
+    line-height: rem(98.44);
     text-align: left;
 }
 
@@ -100,7 +100,6 @@
 .sidebar {
     width: 25%;
     padding: 20px;
-    background-color: #f8f9fa;
 }
 
 .sidebar .widget {
@@ -116,44 +115,13 @@
     margin-bottom: 20px;
 }
 
-.post-meta {
-    margin-bottom: 20px;
-    color: #777;
-    font-size: 0.9em;
-}
-
-.post-meta .post-category,
-.post-meta .post-date {
-    display: inline-block;
-    margin-right: 10px;
-}
 
 .post-content {
     margin-bottom: 20px;
 }
 
-.post-tags {
-    margin-bottom: 20px;
-}
 
-.post-tags .tag-links a {
-    display: inline-block;
-    padding: 5px 10px;
-    background: #0073aa;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
 
-.post-tags .tag-links a:hover {
-    background: #005880;
-}
-
-.post-comments {
-    margin-top: 40px;
-}
 
 .comment-respond {
     margin-top: 40px;
