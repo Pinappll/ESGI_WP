@@ -670,38 +670,71 @@ function mytheme_customize_register($wp_customize) {
 
 add_action('customize_register', 'mytheme_customize_register');
 
-function custom_excerpt_by_sentences($text, $sentence_count = 1) {
-    // Vérifiez si le texte est vide
-    if (empty($text)) {
-        return '';
-    }
+function esgi_customizer_contact_head($wp_customize) {
+    // Section Contact Head
+    $wp_customize->add_section('contact_head_section', array(
+        'title'    => __('Contact Head', 'mytheme'),
+        'priority' => 35,
+    ));
 
-    // Diviser le texte en phrases
-    $sentences = preg_split('/(\.|\!|\?)(\s)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+    // Location Info
+    $wp_customize->add_setting('location1', array(
+        'default'   => __('242 Rue du Faubourg Saint-Antoine, 75012 Paris FRANCE', 'mytheme'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('location1', array(
+        'label'    => __('Location 1', 'mytheme'),
+        'section'  => 'contact_head_section',
+        'settings' => 'location1',
+        'type'     => 'text',
+    ));
 
-    // Vérifiez si nous avons des phrases
-    if (count($sentences) < 2) {
-        return $text;
-    }
+    $wp_customize->add_setting('location2', array(
+        'default'   => __('75012 Paris FRANCE', 'mytheme'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('location2', array(
+        'label'    => __('Location 2', 'mytheme'),
+        'section'  => 'contact_head_section',
+        'settings' => 'location2',
+        'type'     => 'text',
+    ));
 
-    $excerpt = '';
-    $sentences_count = 0;
-
-    for ($i = 0; $i < count($sentences); $i += 3) {
-        if ($sentences_count >= $sentence_count) {
-            break;
-        }
-        $excerpt .= $sentences[$i] . $sentences[$i + 1];
-        $sentences_count++;
-    }
-
-    // Ajouter des points de suspension si le texte est plus long que les phrases spécifiées
-    if ($sentences_count < count($sentences) / 3) {
-        $excerpt .= '...';
-    }
-
-    return $excerpt;
+    // Contact Image
+    $wp_customize->add_setting('contact_image', array(
+        'default'   => '',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'contact_image', array(
+        'label'    => __('Contact Image', 'mytheme'),
+        'section'  => 'contact_head_section',
+        'settings' => 'contact_image',
+    )));
 }
+add_action('customize_register', 'esgi_customizer_contact_head');
+
+add_action('customize_register', 'esgi_add_logo_bw_to_site_identity');
+function esgi_add_logo_bw_to_site_identity($wp_customize) {
+    // Ajouter un paramètre pour le logo noir et blanc
+    $wp_customize->add_setting('logo_bw', array(
+        'default' => '',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    // Ajouter un contrôle pour le logo noir et blanc
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'logo_bw', array(
+        'label' => __('Logo Noir et Blanc', 'ESGI'),
+        'section' => 'title_tagline', // Section Identité du site
+        'settings' => 'logo_bw',
+        'priority' => 8, // Positionner le contrôle dans la section
+    )));
+}
+
+
 
 
 

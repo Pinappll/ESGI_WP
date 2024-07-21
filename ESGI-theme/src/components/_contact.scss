@@ -1,7 +1,7 @@
 .contact-container {
     max-width: 800px;
     margin: 40px;
-    padding: 20px;
+    padding: rem(50) rem(100);
   
     .contact-header {
       margin-bottom: 20px;
@@ -63,4 +63,47 @@
       }
     }
   }
+
+  .contact-head {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    .contact-details {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-bottom: 20px;
+        
+
+        .contact-item {
+            text-align: right;
+            padding: rem(50) rem(100);
+
+            h3 {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 1rem;
+                margin: 5px 0;
+            }
+        }
+    }
+
+    .contact-image {
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
   
