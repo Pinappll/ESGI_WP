@@ -21,7 +21,11 @@
         </div>
         <div class="fold">
             <div class="fold-logo">
-                <?php the_custom_logo(); ?>
+                <?php
+                $logo_bw_url = get_theme_mod('logo_bw');
+                if ($logo_bw_url) : ?>
+                    <img src="<?php echo esc_url($logo_bw_url); ?>" alt="<?php bloginfo('name'); ?> - Logo Noir et Blanc">
+                <?php endif; ?>
                 <a href="" class="custom-menu-link"><img src="<?php echo get_template_directory_uri(); ?>/img/close.svg" alt="Close" id="close"></a>
             </div>
             <nav id="site-nav">

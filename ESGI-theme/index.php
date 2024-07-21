@@ -10,7 +10,7 @@ get_header(); ?>
         </header>
 
         <div class="content-wrapper">
-            <?php get_template_part('template-parts/sidebar'); ?>
+        <?php get_template_part('template-parts/sidebar'); ?>
 
             <div class="blog-posts">
                 <?php if (have_posts()) : ?>
@@ -21,13 +21,13 @@ get_header(); ?>
                             <div class="post-item">
                                 <a href="<?php the_permalink(); ?>">
                                     <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('medium'); ?>
+                                        <div class="post-thumbnail">
+                                <?php the_post_thumbnail('medium'); ?>
+                                <span class="post-category"><?php the_category(', '); ?></span>
+                            </div>
                                     <?php endif; ?>
                                     <h2 class="post-title"><?php the_title(); ?></h2>
-                                    <?php
-                                    $excerpt = get_the_excerpt();
-                                    echo custom_excerpt_by_sentences($excerpt, 5); // Limite à 2 phrases
-                                    ?>
+                                    <div class="post-excerpt"><?php the_excerpt(); ?></div>
                                 </a>
                             </div>
                         <?php endwhile; ?>
