@@ -14,8 +14,8 @@
         <h2><?php echo esc_html(get_theme_mod('service_title', '')); ?></h2>
     </div>
     <div class="service-item">
-        <?php if ($image4 = get_theme_mod('service_image_4')) : ?>
-            <img src="<?php echo esc_url($image4); ?>" alt="Service Image 4">
+        <?php if ($image4 = get_theme_mod('service_image_3')) : ?>
+            <img src="<?php echo esc_url($image4); ?>" alt="Service Image 3">
         <?php endif; ?>
     </div>
 </div>
