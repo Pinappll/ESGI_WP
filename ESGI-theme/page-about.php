@@ -6,9 +6,9 @@ get_header(); ?>
 
 <div id="content" class="container">
 
-<?php get_template_part('content', 'about'); ?>
+<?php get_template_part('template-parts/about-section'); ?>
 
-<?php get_template_part('content', 'team'); ?>
+<?php get_template_part('template-parts/team-section'); ?>
 
 </div>
 

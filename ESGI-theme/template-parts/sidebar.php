@@ -7,7 +7,7 @@
 
     <div class="widget">
         <h2 class="widget-title"><?php _e('Recent Posts'); ?></h2>
-        <?php echo get_recent_posts_with_images_and_dates(5); ?>
+        <?php echo get_recent_posts_with_images_and_dates(4); ?>
     </div>
 
     <div class="widget">

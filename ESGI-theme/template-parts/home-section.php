@@ -5,9 +5,5 @@
         <div>
          <img src="<?php echo esc_url(get_theme_mod('home_hero_image')); ?>" alt="Home hero Image">
         </div>
-        <div class="home-text">
-            <h3><?php echo esc_html(get_theme_mod('home_hero_title')); ?></h3>
-            <p><?php echo esc_html(get_theme_mod('home_hero_paragraph')); ?></p>
-        </div>
     </div>
 </div>

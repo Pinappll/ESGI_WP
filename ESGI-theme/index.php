@@ -10,7 +10,7 @@ get_header(); ?>
         </header>
 
         <div class="content-wrapper">
-        <?php get_template_part('template-parts/sidebar'); ?>
+            <?php get_template_part('template-parts/sidebar'); ?>
 
             <div class="blog-posts">
                 <?php if (have_posts()) : ?>
@@ -24,7 +24,10 @@ get_header(); ?>
                                         <?php the_post_thumbnail('medium'); ?>
                                     <?php endif; ?>
                                     <h2 class="post-title"><?php the_title(); ?></h2>
-                                    <div class="post-excerpt"><?php the_excerpt(); ?></div>
+                                    <?php
+                                    $excerpt = get_the_excerpt();
+                                    echo custom_excerpt_by_sentences($excerpt, 5); // Limite à 2 phrases
+                                    ?>
                                 </a>
                             </div>
                         <?php endwhile; ?>

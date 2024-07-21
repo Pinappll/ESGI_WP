@@ -603,7 +603,7 @@ function my_custom_comment_format($comment, $args, $depth) {
     <?php
 
 }
-function get_recent_posts_with_images_and_dates($number_of_posts = 5) {
+function get_recent_posts_with_images_and_dates($number_of_posts = 4) {
     $recent_posts_query = new WP_Query(array(
         'posts_per_page' => $number_of_posts,
         'post_status'    => 'publish'
@@ -633,5 +633,77 @@ function get_recent_posts_with_images_and_dates($number_of_posts = 5) {
     
     return $output;
 }
+
+function mytheme_customize_register($wp_customize) {
+    // Section Contact Form
+    $wp_customize->add_section('contact_form_section', array(
+        'title'    => __('Contact Form', 'mytheme'),
+        'priority' => 30,
+    ));
+
+    // Setting for Contact Form H1
+    $wp_customize->add_setting('contact_form_h1', array(
+        'default'   => __('Write us here', 'mytheme'),
+        'transport' => 'refresh',
+    ));
+
+    // Control for Contact Form H1
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'contact_form_h1_control', array(
+        'label'    => __('Contact Form H1', 'mytheme'),
+        'section'  => 'contact_form_section',
+        'settings' => 'contact_form_h1',
+    )));
+
+    // Setting for Contact Form P
+    $wp_customize->add_setting('contact_form_p', array(
+        'default'   => __('Go! Don\'t be shy.', 'mytheme'),
+        'transport' => 'refresh',
+    ));
+
+    // Control for Contact Form P
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'contact_form_p_control', array(
+        'label'    => __('Contact Form Paragraph', 'mytheme'),
+        'section'  => 'contact_form_section',
+        'settings' => 'contact_form_p',
+    )));
+}
+
+add_action('customize_register', 'mytheme_customize_register');
+
+function custom_excerpt_by_sentences($text, $sentence_count = 1) {
+    // Vérifiez si le texte est vide
+    if (empty($text)) {
+        return '';
+    }
+
+    // Diviser le texte en phrases
+    $sentences = preg_split('/(\.|\!|\?)(\s)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+    // Vérifiez si nous avons des phrases
+    if (count($sentences) < 2) {
+        return $text;
+    }
+
+    $excerpt = '';
+    $sentences_count = 0;
+
+    for ($i = 0; $i < count($sentences); $i += 3) {
+        if ($sentences_count >= $sentence_count) {
+            break;
+        }
+        $excerpt .= $sentences[$i] . $sentences[$i + 1];
+        $sentences_count++;
+    }
+
+    // Ajouter des points de suspension si le texte est plus long que les phrases spécifiées
+    if ($sentences_count < count($sentences) / 3) {
+        $excerpt .= '...';
+    }
+
+    return $excerpt;
+}
+
+
+
 
 
