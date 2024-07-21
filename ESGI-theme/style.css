@@ -4475,13 +4475,13 @@ summary {
 
 @font-face {
   font-family: "Muli";
-  src: url("../../assets/fonts/muli/Muli.ttf") format("truetype");
+  src: url("./assets/fonts/muli/Muli.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Muli";
-  src: url("../../assets/fonts/muli/Muli-Bold.ttf") format("truetype");
+  src: url("./assets/fonts/muli/Muli-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -4504,6 +4504,55 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-family: "Muli";
+  font-size: 3rem;
+  line-height: 6.1525rem;
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+h2 {
+  font-family: "Muli";
+  font-size: 2.5rem;
+  line-height: 4.94125rem;
+  color: var(--main-color);
+  font-weight: 600;
+  letter-spacing: 0.1875rem;
+}
+
+h3 {
+  font-family: "Muli";
+  font-size: 2rem;
+  line-height: 3.68625rem;
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+h4 {
+  font-family: "Muli";
+  font-size: 1.5rem;
+  line-height: 2.56375rem;
+  color: var(--main-color);
+  font-weight: 400;
+}
+
+h5 {
+  font-family: "Muli";
+  font-size: 1rem;
+  line-height: 2.56375rem;
+  color: var(--main-color);
+  font-weight: 400;
+}
+
+h6 {
+  font-family: "muli";
+  font-size: 0.5rem;
+  line-height: 1.465rem;
+  color: var(--main-color);
+  font-weight: 400;
 }
 
 body {
@@ -4702,14 +4751,14 @@ svg:hover path {
 }
 .identity-card h1 {
   font-family: "Muli";
-  font-size: 5.25rem;
+  font-size: 3rem;
   line-height: 6.1525rem;
   color: var(--main-color);
   font-weight: 600;
 }
 .identity-card h2 {
   font-family: "Muli";
-  font-size: 2.1875rem;
+  font-size: 1.5rem;
   line-height: 2.56375rem;
   color: var(--main-color);
   font-weight: 400;
@@ -4914,7 +4963,7 @@ svg:hover path {
   color: inherit;
   text-decoration: none;
   font-family: "Muli";
-  font-size: 2.9375rem;
+  font-size: 2rem;
   line-height: 3.68625rem;
   color: var(--main-color);
   font-weight: 600;
@@ -4927,7 +4976,7 @@ svg:hover path {
 }
 .posts-list li a time {
   font-family: "muli";
-  font-size: 1.25rem;
+  font-size: 0.5rem;
   line-height: 1.465rem;
   color: var(--main-color);
   font-weight: 400;
@@ -4943,7 +4992,7 @@ svg:hover path {
 .partners-page .partners-hero h1 {
   margin-bottom: 8.0625rem;
   font-family: "Muli";
-  font-size: 5.25rem;
+  font-size: 3rem;
   line-height: 6.1525rem;
   color: var(--main-color);
   font-weight: 600;
@@ -4965,7 +5014,7 @@ svg:hover path {
 }
 .team-section h2 {
   font-family: "Muli";
-  font-size: 3.9375rem;
+  font-size: 2.5rem;
   line-height: 4.94125rem;
   color: var(--main-color);
   font-weight: 600;
@@ -5009,7 +5058,7 @@ svg:hover path {
 }
 .about-section h2 {
   font-family: "Muli";
-  font-size: 3.9375rem;
+  font-size: 2.5rem;
   line-height: 4.94125rem;
   color: var(--main-color);
   font-weight: 600;
@@ -5032,7 +5081,7 @@ svg:hover path {
   flex: 0 0 auto;
   text-align: left;
   margin-right: 185px;
-  margin-left: -120px;
+  margin-left: -170px;
 }
 .about-image img {
   width: 100%;
@@ -5055,7 +5104,7 @@ svg:hover path {
 .about-details .our-vision h3,
 .about-details .our-mission h3 {
   font-family: "Muli";
-  font-size: 2.9375rem;
+  font-size: 2rem;
   line-height: 3.68625rem;
   color: var(--main-color);
   font-weight: 600;
@@ -5144,11 +5193,6 @@ svg:hover path {
   align-items: center;
   justify-content: center;
   background-color: #f8f9fa;
-}
-
-h1 {
-  font-family: "Muli";
-  font-size: 5.25rem;
 }
 
 .home-section {
@@ -5412,6 +5456,61 @@ ul.list-categorie li::before, ul.list-archive li::before {
   text-decoration: none;
   padding: 0.4375rem;
   font-size: 1rem !important;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 40px;
+  padding: 20px;
+}
+.contact-container .contact-header {
+  margin-bottom: 20px;
+}
+.contact-container .contact-header h1 {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  margin-bottom: 10px;
+}
+.contact-container .contact-header p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+.contact-container .contact-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.contact-container .contact-form .form-group {
+  width: 100%;
+}
+.contact-container .contact-form .form-group input, .contact-container .contact-form .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.055), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.contact-container .contact-form .form-group input::placeholder, .contact-container .contact-form .form-group textarea::placeholder {
+  color: #ADADAD;
+}
+.contact-container .contact-form .form-group input:focus, .contact-container .contact-form .form-group textarea:focus {
+  outline: none;
+}
+.contact-container .contact-form .half-width {
+  width: calc(50% - 10px);
+}
+.contact-container .contact-form textarea {
+  resize: none;
+  height: 178px;
+}
+.contact-container .contact-form button {
+  font-size: 1rem;
+  color: var(--main-color);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 /*# sourceMappingURL=style.css.map */
