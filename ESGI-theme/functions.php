@@ -858,3 +858,67 @@ function esgi_service_customize_register($wp_customize) {
     )));
 
 }
+
+function esgi_create_default_pages() {
+    // Définir les pages à créer
+    $pages = array(
+        'home' => array(
+            'title' => 'Accueil',
+            'content' => 'Bienvenue sur notre site web.',
+            'template' => '' // Utiliser le modèle par défaut, c'est-à-dire page.php
+        ),
+        'blog' => array(
+            'title' => 'Blog',
+            'content' => '',
+            'template' => '' // Utiliser le modèle par défaut, c'est-à-dire index.php
+        ),
+        'about' => array(
+            'title' => 'À propos',
+            'content' => 'À propos de nous.',
+            'template' => 'page-about.php'
+        ),
+        'services' => array(
+            'title' => 'Services',
+            'content' => 'Nos services.',
+            'template' => 'page-services.php'
+        ),
+        'contact' => array(
+            'title' => 'Contact',
+            'content' => 'Contactez-nous.',
+            'template' => 'page-contact.php'
+        ),
+        'partner' => array(
+            'title' => 'Partenaires',
+            'content' => 'Nos partenaires.',
+            'template' => 'page-partners.php'
+        ),
+    );
+
+    foreach ($pages as $slug => $page) {
+        // Vérifier si la page existe déjà
+        $page_check = get_page_by_path($slug);
+        if (!isset($page_check->ID)) {
+            // Créer la page
+            $page_id = wp_insert_post(array(
+                'post_title' => $page['title'],
+                'post_content' => $page['content'],
+                'post_name' => $slug,
+                'post_status' => 'publish',
+                'post_type' => 'page',
+                'page_template' => $page['template']
+            ));
+
+            // Définir la page d'accueil comme la page statique de la page d'accueil si nécessaire
+            if ($slug == 'home') {
+                update_option('show_on_front', 'page');
+                update_option('page_on_front', $page_id);
+            }
+
+            // Définir la page de blog
+            if ($slug == 'blog') {
+                update_option('page_for_posts', $page_id);
+            }
+        }
+    }
+}
+add_action('after_switch_theme', 'esgi_create_default_pages');
