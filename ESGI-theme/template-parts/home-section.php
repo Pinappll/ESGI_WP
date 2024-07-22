@@ -7,7 +7,11 @@
     <div class="left"></div>
     <div class="right">
         <div>
-         <img src="<?php echo esc_url(get_theme_mod('home_hero_image')); ?>" alt="Home hero Image">
+        <?php if (get_theme_mod('home_hero_image')) : ?>
+            <img src="<?php echo esc_url(get_theme_mod('home_hero_image')); ?>" alt="Home hero Image">
+        <?php else : ?>
+            <img src="<?php echo get_template_directory_uri() . '/img/png/1.png'; ?>" alt="Home hero Image">
+        <?php endif; ?>
         </div>
         <div class="home-about-section">
             <h2><?php echo get_theme_mod('home_hero_title', 'About Us'); ?></h2>

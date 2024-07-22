@@ -3,7 +3,11 @@
 
     <div class="about-content">
         <div class="about-image">
-            <img src="<?php echo esc_url(get_theme_mod('about_image')); ?>" alt="About Image">
+            <?php if (get_theme_mod('about_image')) : ?>
+                <img src="<?php echo esc_url(get_theme_mod('about_image')); ?>" alt="About Image">
+            <?php else : ?>
+                <img src="<?php echo get_template_directory_uri() . '/img/png/2.png'; ?>" alt="About Image">
+            <?php endif; ?>
         </div>
 
         <div class="about-details">

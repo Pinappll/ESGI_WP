@@ -4,8 +4,11 @@
         <div class="footer-logo">
         <?php
                 $logo_bw_url = get_theme_mod('logo_bw');
+                $logo_bw_default = get_template_directory_uri() . '/img/logo-white.svg';
                 if ($logo_bw_url) : ?>
                     <img src="<?php echo esc_url($logo_bw_url); ?>" alt="<?php bloginfo('name'); ?> - Logo Noir et Blanc">
+                <?php else : ?>
+                    <img src="<?php echo esc_url($logo_bw_default); ?>" alt="<?php bloginfo('name'); ?> - Logo Noir et Blanc">
                 <?php endif; ?>
         </div>
         <div class="footer-contact">

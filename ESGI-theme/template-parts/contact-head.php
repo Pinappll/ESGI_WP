@@ -20,7 +20,11 @@
     <div class="left"></div>
     <div class="right">
         <div>
-        <img src="<?php echo esc_url(get_theme_mod('contact_image')); ?>" alt="<?php _e('Contact Image', 'mytheme'); ?>">
+        <?php if (get_theme_mod('contact_image')) : ?>
+            <img src="<?php echo esc_url(get_theme_mod('contact_image')); ?>" alt="<?php _e('Contact Image', 'mytheme'); ?>">
+        <?php else : ?>
+            <img src="<?php echo get_template_directory_uri() . '/img/png/10.png'; ?>" alt="<?php _e('Contact Image', 'mytheme'); ?>">
+        <?php endif; ?>
         </div>
     </div>
 </div>
