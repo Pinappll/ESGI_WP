@@ -1,7 +1,6 @@
 .contact-container {
     max-width: 800px;
-    margin: 40px;
-    padding: rem(50) rem(100);
+    margin-bottom: 40px;
   
     .contact-header {
       margin-bottom: 20px;
@@ -65,8 +64,6 @@
   }
 
   .contact-head {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 40px;
 
     .contact-details {

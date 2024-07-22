@@ -9,10 +9,9 @@
 
     .partners-logos {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: rem(119);
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
     .partners-logos img {

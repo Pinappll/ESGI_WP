@@ -6,7 +6,7 @@ get_header(); ?>
     <main id="main" class="site-main">
 
         <header class="page-header">
-            <h1 class="entry-title">Blog.</h1>
+            <h1 class="entry-title"><?php echo esc_html(get_theme_mod('blog_text', 'Blog.')); ?></h1>
         </header>
 
         <div class="content-wrapper">

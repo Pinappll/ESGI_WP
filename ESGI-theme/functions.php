@@ -297,7 +297,7 @@ function esgi_repeated_component_customize_register($wp_customize) {
     ));
 }
 
-// Customizer pour les partenaires
+// Customizer pour about us
 add_action('customize_register', 'esgi_customize_register');
 function esgi_customize_register($wp_customize) {
 
@@ -307,8 +307,30 @@ function esgi_customize_register($wp_customize) {
         'priority' => 30,
     ]);
 
+    $wp_customize->add_setting('about_text', array(
+        'default' => 'About us.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('about_text', array(
+        'label' => __('about Text', 'mytheme'),
+        'section' => 'esgi_about_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('about_hero_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'about_hero_image', array(
+        'label' => __('About Hero Image', 'ESGI'),
+        'section' => 'esgi_about_section',
+        'settings' => 'about_hero_image',
+    )));
+
     $wp_customize->add_setting('about_section_title', [
-        'default' => 'About Us',
+        'default' => '',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
@@ -320,7 +342,7 @@ function esgi_customize_register($wp_customize) {
     ]);
 
     $wp_customize->add_setting('about_section_description', [
-        'default' => 'Specializing in the creation of exceptional events for private and corporate clients, we design, plan and manage every project from conception to execution.',
+        'default' => '',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_textarea_field',
     ]);
@@ -468,6 +490,7 @@ function esgi_home_customize_register($wp_customize) {
     // Section pour le Home
     $wp_customize->add_section('home_section', array(
         'title' => __('Home', 'mytheme'),
+        'description' => __('Gérez le contenu de la page d\'accueil ici.'),
         'priority' => 20,
     ));
 
@@ -478,6 +501,17 @@ function esgi_home_customize_register($wp_customize) {
 
     $wp_customize->add_control('home_main_title', array(
         'label' => __('Home Main Title', 'mytheme'),
+        'section' => 'home_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('home_main_title2', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('home_main_title2', array(
+        'label' => __('Home Main Title 2', 'mytheme'),
         'section' => 'home_section',
         'type' => 'text',
     ));
@@ -616,6 +650,17 @@ function esgi_contact_form_customize_register($wp_customize) {
         'priority' => 40,
     ));
 
+    $wp_customize->add_setting('contact_text', array(
+        'default' => 'Contact.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('contact_text', array(
+        'label' => __('Contact Text', 'mytheme'),
+        'section' => 'contact_form_section',
+        'type' => 'text',
+    ));
+
     // Setting for Contact Form H1
     $wp_customize->add_setting('contact_form_h1', array(
         'default' => __('Write us here', 'mytheme'),
@@ -697,7 +742,7 @@ add_action('customize_register', 'esgi_add_logo_bw_to_site_identity');
 function esgi_add_logo_bw_to_site_identity($wp_customize) {
     // Ajouter un paramètre pour le logo noir et blanc
     $wp_customize->add_setting('logo_bw', array(
-        'default' => '',
+        'default' => get_template_directory_uri() . '/img/logo-white.svg',
         'transport' => 'refresh',
         'sanitize_callback' => 'esc_url_raw',
     ));
@@ -711,4 +756,105 @@ function esgi_add_logo_bw_to_site_identity($wp_customize) {
         'settings' => 'logo_bw',
         'priority' => 8, // Positionner le contrôle dans la section
     )));
+}
+
+// Customizer pour le footer
+add_action('customize_register', 'esgi_partner_customize_register');
+function esgi_partner_customize_register($wp_customize) {
+
+    // Partner Text
+    $wp_customize->add_section('partner_text_section', array(
+        'title' => __('Partner', 'mytheme'),
+        'priority' => 50,
+    ));
+
+    $wp_customize->add_setting('partner_text', array(
+        'default' => 'Our Partners.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('partner_text', array(
+        'label' => __('Partner Text', 'mytheme'),
+        'section' => 'partner_text_section',
+        'type' => 'text',
+    ));
+}
+
+
+// Customizer pour le blog
+add_action('customize_register', 'esgi_blog_customize_register');
+function esgi_blog_customize_register($wp_customize) {
+
+    // blog Text
+    $wp_customize->add_section('blog_text_section', array(
+        'title' => __('blog', 'mytheme'),
+        'priority' => 50,
+    ));
+
+    $wp_customize->add_setting('blog_text', array(
+        'default' => 'Blogs.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('blog_text', array(
+        'label' => __('blog Text', 'mytheme'),
+        'section' => 'blog_text_section',
+        'type' => 'text',
+    ));
+}
+
+// Customizer pour le service
+add_action('customize_register', 'esgi_service_customize_register');
+function esgi_service_customize_register($wp_customize) {
+
+    // service Text
+    $wp_customize->add_section('service_text_section', array(
+        'title' => __('Service', 'mytheme'),
+        'priority' => 50,
+    ));
+
+    $wp_customize->add_setting('service_text', array(
+        'default' => 'Our Services.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('service_text', array(
+        'label' => __('Titre page', 'mytheme'),
+        'section' => 'service_text_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('service_title_text', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('service_title_text', array(
+        'label' => __('Titre texte', 'mytheme'),
+        'section' => 'service_text_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('service_paragraph_text', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('service_paragraph_text', array(
+        'label' => __('Paragraphe texte', 'mytheme'),
+        'section' => 'service_text_section',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('service_image_text', array(
+        'default' => get_template_directory_uri() . '/img/png/9.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'service_image_text', array(
+        'label' => __('Services Image', 'ESGI'),
+        'section' => 'service_text_section',
+        'settings' => 'service_image_text',
+    )));
+
 }
