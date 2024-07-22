@@ -1,8 +1,5 @@
 <div class="about-container">
-    <div class="about-section">
-        <h2><?php echo get_theme_mod('about_section_title', 'About Us'); ?></h2>
-        <p><?php echo get_theme_mod('about_section_description', 'Specializing in the creation of exceptional events for private and corporate clients, we design, plan and manage every project from conception to execution.'); ?></p>
-    </div>
+    
 
     <div class="about-content">
         <div class="about-image">

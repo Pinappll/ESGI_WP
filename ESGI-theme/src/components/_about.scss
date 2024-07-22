@@ -5,22 +5,22 @@
     padding: 50px 0;
 }
 
-.about-section {
-    text-align: center;
-    padding: 0 0 20px;
-    width: 100%;
+// .about-section {
+//     text-align: center;
+//     padding: 0 0 20px;
+//     width: 100%;
 
-    h2 {
-        @include heading2;
-        margin-bottom: 20px;
-    }
+//     h2 {
+//         @include heading2;
+//         margin-bottom: 20px;
+//     }
 
-    p {
-        font-size: 1.2rem;
-        max-width: rem(573); // Ajustez cette valeur selon vos besoins pour limiter la largeur du texte
-        margin: 0 auto; // Centre le paragraphe horizontalement
-    }
-}
+//     p {
+//         font-size: 1.2rem;
+//         max-width: rem(573); // Ajustez cette valeur selon vos besoins pour limiter la largeur du texte
+//         margin: 0 auto; // Centre le paragraphe horizontalement
+//     }
+// }
 
 .about-content {
     display: flex;

@@ -16,9 +16,13 @@
             <p><a href="mailto:<?php echo antispambot(get_theme_mod('ceo_email', '')); ?>"><?php echo antispambot(get_theme_mod('ceo_email', '')); ?></a></p>
         </div>
     </div>
-    <div class="contact-image">
-        <?php if (get_theme_mod('contact_image')) : ?>
-            <img src="<?php echo esc_url(get_theme_mod('contact_image')); ?>" alt="<?php _e('Contact Image', 'mytheme'); ?>">
-        <?php endif; ?>
+    <div class="home-section">
+    <div class="left"></div>
+    <div class="right">
+        <div>
+        <img src="<?php echo esc_url(get_theme_mod('contact_image')); ?>" alt="<?php _e('Contact Image', 'mytheme'); ?>">
+        </div>
     </div>
 </div>
+</div>
+

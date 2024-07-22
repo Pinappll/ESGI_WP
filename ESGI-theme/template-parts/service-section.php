@@ -1,4 +1,3 @@
-<h1><?php echo esc_html(get_theme_mod('service_main_title', 'Our Services')); ?></h1>
 <div class="service-section">
     <div class="service-item">
         <?php if ($image1 = get_theme_mod('service_image_1')) : ?>
@@ -18,4 +17,7 @@
             <img src="<?php echo esc_url($image4); ?>" alt="Service Image 3">
         <?php endif; ?>
     </div>
+</div>
+
+
 </div>

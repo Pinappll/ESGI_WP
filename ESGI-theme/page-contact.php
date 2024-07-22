@@ -3,8 +3,8 @@
 Template Name: Contact
 */
 get_header(); ?>
-<h1><?php echo get_the_title(); ?></h1>
-<div class="">
+<div class="container">
+<h1><?php echo esc_html(get_theme_mod('contact_text', 'Contact.')); ?></h1>
 <?php get_template_part('template-parts/contact-head'); ?>
 
     <section class="contact-form-section">
